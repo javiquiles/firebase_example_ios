@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		632F133224B16F8F0087A4C0 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 632F133124B16F8F0087A4C0 /* GoogleService-Info.plist */; };
+		63C6046E24B4147000915C44 /* HomeViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63C6046C24B4147000915C44 /* HomeViewController.swift */; };
+		63C6046F24B4147000915C44 /* HomeViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63C6046D24B4147000915C44 /* HomeViewController.xib */; };
 		63EF42C424B0229D000F3A09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EF42C324B0229D000F3A09 /* AppDelegate.swift */; };
 		63EF42CD24B022A0000F3A09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63EF42CC24B022A0000F3A09 /* Assets.xcassets */; };
 		63EF42D024B022A0000F3A09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63EF42CE24B022A0000F3A09 /* LaunchScreen.storyboard */; };
@@ -20,6 +22,8 @@
 		0664F2A9C8AF487D1FB12701 /* Pods-FirebaseExample.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseExample.release.xcconfig"; path = "Target Support Files/Pods-FirebaseExample/Pods-FirebaseExample.release.xcconfig"; sourceTree = "<group>"; };
 		29C1501878A19B01BC53B485 /* Pods-FirebaseExample.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-FirebaseExample.debug.xcconfig"; path = "Target Support Files/Pods-FirebaseExample/Pods-FirebaseExample.debug.xcconfig"; sourceTree = "<group>"; };
 		632F133124B16F8F0087A4C0 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		63C6046C24B4147000915C44 /* HomeViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeViewController.swift; sourceTree = "<group>"; };
+		63C6046D24B4147000915C44 /* HomeViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = HomeViewController.xib; sourceTree = "<group>"; };
 		63EF42C024B0229D000F3A09 /* FirebaseExample.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = FirebaseExample.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		63EF42C324B0229D000F3A09 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		63EF42CC24B022A0000F3A09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
@@ -50,6 +54,24 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		63C6046A24B4141F00915C44 /* LoginEmail */ = {
+			isa = PBXGroup;
+			children = (
+				63EF42D724B02A75000F3A09 /* LoginViewController.swift */,
+				63EF42D824B02A75000F3A09 /* LoginViewController.xib */,
+			);
+			path = LoginEmail;
+			sourceTree = "<group>";
+		};
+		63C6046B24B4145000915C44 /* Home */ = {
+			isa = PBXGroup;
+			children = (
+				63C6046C24B4147000915C44 /* HomeViewController.swift */,
+				63C6046D24B4147000915C44 /* HomeViewController.xib */,
+			);
+			path = Home;
+			sourceTree = "<group>";
+		};
 		63EF42B724B0229D000F3A09 = {
 			isa = PBXGroup;
 			children = (
@@ -71,9 +93,9 @@
 		63EF42C224B0229D000F3A09 /* FirebaseExample */ = {
 			isa = PBXGroup;
 			children = (
+				63C6046B24B4145000915C44 /* Home */,
+				63C6046A24B4141F00915C44 /* LoginEmail */,
 				63EF42C324B0229D000F3A09 /* AppDelegate.swift */,
-				63EF42D724B02A75000F3A09 /* LoginViewController.swift */,
-				63EF42D824B02A75000F3A09 /* LoginViewController.xib */,
 				63EF42CC24B022A0000F3A09 /* Assets.xcassets */,
 				63EF42CE24B022A0000F3A09 /* LaunchScreen.storyboard */,
 				63EF42D124B022A0000F3A09 /* Info.plist */,
@@ -153,6 +175,7 @@
 			files = (
 				63EF42D024B022A0000F3A09 /* LaunchScreen.storyboard in Resources */,
 				632F133224B16F8F0087A4C0 /* GoogleService-Info.plist in Resources */,
+				63C6046F24B4147000915C44 /* HomeViewController.xib in Resources */,
 				63EF42CD24B022A0000F3A09 /* Assets.xcassets in Resources */,
 				63EF42DA24B02A75000F3A09 /* LoginViewController.xib in Resources */,
 			);
@@ -209,6 +232,7 @@
 			files = (
 				63EF42C424B0229D000F3A09 /* AppDelegate.swift in Sources */,
 				63EF42D924B02A75000F3A09 /* LoginViewController.swift in Sources */,
+				63C6046E24B4147000915C44 /* HomeViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
