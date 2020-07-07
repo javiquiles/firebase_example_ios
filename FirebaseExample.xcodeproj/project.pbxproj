@@ -3,7 +3,7 @@
 	archiveVersion = 1;
 	classes = {
 	};
-	objectVersion = 50;
+	objectVersion = 51;
 	objects = {
 
 /* Begin PBXBuildFile section */
@@ -11,8 +11,8 @@
 		63EF42C424B0229D000F3A09 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EF42C324B0229D000F3A09 /* AppDelegate.swift */; };
 		63EF42CD24B022A0000F3A09 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 63EF42CC24B022A0000F3A09 /* Assets.xcassets */; };
 		63EF42D024B022A0000F3A09 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 63EF42CE24B022A0000F3A09 /* LaunchScreen.storyboard */; };
-		63EF42D924B02A75000F3A09 /* FALoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EF42D724B02A75000F3A09 /* FALoginViewController.swift */; };
-		63EF42DA24B02A75000F3A09 /* FALoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EF42D824B02A75000F3A09 /* FALoginViewController.xib */; };
+		63EF42D924B02A75000F3A09 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 63EF42D724B02A75000F3A09 /* LoginViewController.swift */; };
+		63EF42DA24B02A75000F3A09 /* LoginViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 63EF42D824B02A75000F3A09 /* LoginViewController.xib */; };
 		C5D2B93C75A1524591A88CC4 /* Pods_FirebaseExample.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = A23463C4EC9D40A70261752D /* Pods_FirebaseExample.framework */; };
 /* End PBXBuildFile section */
 
@@ -25,8 +25,8 @@
 		63EF42CC24B022A0000F3A09 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		63EF42CF24B022A0000F3A09 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		63EF42D124B022A0000F3A09 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
-		63EF42D724B02A75000F3A09 /* FALoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FALoginViewController.swift; sourceTree = "<group>"; };
-		63EF42D824B02A75000F3A09 /* FALoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = FALoginViewController.xib; sourceTree = "<group>"; };
+		63EF42D724B02A75000F3A09 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
+		63EF42D824B02A75000F3A09 /* LoginViewController.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = LoginViewController.xib; sourceTree = "<group>"; };
 		A23463C4EC9D40A70261752D /* Pods_FirebaseExample.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_FirebaseExample.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
@@ -72,8 +72,8 @@
 			isa = PBXGroup;
 			children = (
 				63EF42C324B0229D000F3A09 /* AppDelegate.swift */,
-				63EF42D724B02A75000F3A09 /* FALoginViewController.swift */,
-				63EF42D824B02A75000F3A09 /* FALoginViewController.xib */,
+				63EF42D724B02A75000F3A09 /* LoginViewController.swift */,
+				63EF42D824B02A75000F3A09 /* LoginViewController.xib */,
 				63EF42CC24B022A0000F3A09 /* Assets.xcassets */,
 				63EF42CE24B022A0000F3A09 /* LaunchScreen.storyboard */,
 				63EF42D124B022A0000F3A09 /* Info.plist */,
@@ -88,7 +88,6 @@
 				29C1501878A19B01BC53B485 /* Pods-FirebaseExample.debug.xcconfig */,
 				0664F2A9C8AF487D1FB12701 /* Pods-FirebaseExample.release.xcconfig */,
 			);
-			name = Pods;
 			path = Pods;
 			sourceTree = "<group>";
 		};
@@ -155,7 +154,7 @@
 				63EF42D024B022A0000F3A09 /* LaunchScreen.storyboard in Resources */,
 				632F133224B16F8F0087A4C0 /* GoogleService-Info.plist in Resources */,
 				63EF42CD24B022A0000F3A09 /* Assets.xcassets in Resources */,
-				63EF42DA24B02A75000F3A09 /* FALoginViewController.xib in Resources */,
+				63EF42DA24B02A75000F3A09 /* LoginViewController.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -209,7 +208,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				63EF42C424B0229D000F3A09 /* AppDelegate.swift in Sources */,
-				63EF42D924B02A75000F3A09 /* FALoginViewController.swift in Sources */,
+				63EF42D924B02A75000F3A09 /* LoginViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

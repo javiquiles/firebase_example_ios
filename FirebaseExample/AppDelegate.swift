@@ -15,7 +15,7 @@ class AppDelegate: UIResponder, UIApplicationDelegate, UINavigationControllerDel
     var window: UIWindow?
 
     func application(_ application: UIApplication, didFinishLaunchingWithOptions launchOptions: [UIApplication.LaunchOptionsKey: Any]?) -> Bool {
-        let navController = UINavigationController(rootViewController: FALoginViewController())
+        let navController = UINavigationController(rootViewController: LoginViewController())
 
         navController.delegate = self
         navController.setNavigationBarHidden(false, animated: false)
