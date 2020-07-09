@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import FirebaseAuth
 
 enum ProviderType: String {
     case basic
@@ -24,7 +25,7 @@ class HomeViewController: UIViewController {
     init(email: String, provider: ProviderType) {
         self.email = email
         self.provider = provider
-        super.init(nibName: "HomeViewController", bundle: Bundle.main)
+        super.init(nibName: String(describing: HomeViewController.self), bundle: Bundle.main)
     }
 
     required init?(coder: NSCoder) {

@@ -19,7 +19,7 @@ class LoginViewController: UIViewController {
 
     init(presenter: LoginPresenter) {
         self.presenter = presenter
-        super.init(nibName: "LoginViewController", bundle: Bundle.main)
+        super.init(nibName: String(describing: LoginViewController.self), bundle: Bundle.main)
         self.presenter.delegate = self
     }
 
@@ -37,10 +37,7 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func signUpButtonAction(_ sender: Any) {
-    }
-
-    private func signUp(email: String, password: String) {
-        
+        presenter.signUpButtonTapped(email: emailTextField.text, password: passwordTextField.text)
     }
 
 }
