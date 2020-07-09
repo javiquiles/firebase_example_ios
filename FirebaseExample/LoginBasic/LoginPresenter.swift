@@ -34,15 +34,15 @@ class LoginPresenter {
             return
         }
 
-        onError()
+        onError(error!.localizedDescription)
     }
 
     private func onSuccess(_ result: AuthDataResult) {
         delegate?.goToHome(email: result.user.email ?? "")
     }
 
-    private func onError() {
-        delegate?.showAlert()
+    private func onError(_ error: String) {
+        delegate?.showAlert(error)
     }
 
 }

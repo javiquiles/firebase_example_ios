@@ -7,7 +7,6 @@
 //
 
 import UIKit
-import FirebaseAuth
 
 enum ProviderType: String {
     case basic
@@ -19,13 +18,20 @@ class HomeViewController: UIViewController {
     @IBOutlet weak var providerLabel: UILabel!
     @IBOutlet weak var logOutButton: UIButton!
 
-    private let email: String
-    private let provider: ProviderType
+    private let presenter: HomePresenter
+    private var email: String = ""
+    private var provider: ProviderType = .basic
 
-    init(email: String, provider: ProviderType) {
+    init(presenter: HomePresenter) {
+        self.presenter = presenter
+        super.init(nibName: String(describing: HomeViewController.self), bundle: Bundle.main)
+        self.presenter.delegate = self
+    }
+
+    convenience init(email: String, provider: ProviderType) {
+        self.init(presenter: HomeInstance.resolvePresenter())
         self.email = email
         self.provider = provider
-        super.init(nibName: String(describing: HomeViewController.self), bundle: Bundle.main)
     }
 
     required init?(coder: NSCoder) {
@@ -40,6 +46,15 @@ class HomeViewController: UIViewController {
     }
 
     @IBAction func logOutButtonAction(_ sender: Any) {
+        presenter.logOutButtonTapped(provider)
+    }
+
+}
+
+extension HomeViewController: HomeProtocol {
+
+    func goBack() {
+        navigationController?.popViewController(animated: true)
     }
 
 }

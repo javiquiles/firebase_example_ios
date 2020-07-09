@@ -48,8 +48,8 @@ extension LoginViewController: LoginProtocol {
         navigationController?.pushViewController(HomeViewController(email: email, provider: .basic), animated: true)
     }
     
-    func showAlert() {
-        let alertController = UIAlertController(title: "Error", message: "No se pudo registrar el usuario", preferredStyle: .alert)
+    func showAlert(_ error: String) {
+        let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
         present(alertController, animated: true, completion: nil)
     }

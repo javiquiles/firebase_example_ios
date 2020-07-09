@@ -8,5 +8,5 @@
 
 protocol LoginProtocol: class {
     func goToHome(email: String)
-    func showAlert()
+    func showAlert(_ error: String)
 }
