@@ -12,9 +12,15 @@ class HomePresenter {
 
     weak var delegate: HomeProtocol?
 
+    func viewDidLoad(_ email: String, _ provider: ProviderType) {
+        saveUserData(email, provider)
+    }
+
     func logOutButtonTapped(_ provider: ProviderType) {
+        removeUserData()
+
         switch provider {
-        case .basic:
+        case .basic, .google:
             do {
                 try Auth.auth().signOut()
                 delegate?.goBack()
@@ -22,6 +28,18 @@ class HomePresenter {
                 print("Ocurrió un error.")
             }
         }
+    }
+
+    private func saveUserData(_ email: String, _ provider: ProviderType) {
+        UserDefaults.standard.set(email, forKey: "email")
+        UserDefaults.standard.set(provider.rawValue, forKey: "provider")
+        UserDefaults.standard.synchronize()
+    }
+
+    private func removeUserData() {
+        UserDefaults.standard.removeObject(forKey: "email")
+        UserDefaults.standard.removeObject(forKey: "provider")
+        UserDefaults.standard.synchronize()
     }
 
 }

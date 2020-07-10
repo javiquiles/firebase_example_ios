@@ -14,7 +14,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
-
+    @IBOutlet weak var googleButton: UIButton!
+    
     private let presenter: LoginPresenter
 
     init(presenter: LoginPresenter) {
@@ -30,6 +31,7 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        //googleButton.imageView?.contentMode = .scaleAspectFit
     }
 
     @IBAction func logInButtonAction(_ sender: Any) {
@@ -40,6 +42,8 @@ class LoginViewController: UIViewController {
         presenter.signUpButtonTapped(email: emailTextField.text, password: passwordTextField.text)
     }
 
+    @IBAction func googleButtonAction(_ sender: Any) {
+    }
 }
 
 extension LoginViewController: LoginProtocol {

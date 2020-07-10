@@ -11,6 +11,7 @@
         <placeholder placeholderIdentifier="IBFilesOwner" id="-1" userLabel="File's Owner" customClass="LoginViewController" customModule="FirebaseExample" customModuleProvider="target">
             <connections>
                 <outlet property="emailTextField" destination="yTP-PQ-xUl" id="JXV-wa-tTh"/>
+                <outlet property="googleButton" destination="7zR-9d-VdU" id="6Lx-c6-HvT"/>
                 <outlet property="logInButton" destination="3Gb-DK-r1N" id="aEv-kT-chD"/>
                 <outlet property="passwordTextField" destination="DfH-PG-eir" id="gQA-KJ-5qi"/>
                 <outlet property="signUpButton" destination="swc-ts-Jap" id="ONw-pT-EgV"/>
@@ -23,7 +24,7 @@
             <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
             <subviews>
                 <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillEqually" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="naM-ND-qZV">
-                    <rect key="frame" x="16" y="84" width="382" height="122"/>
+                    <rect key="frame" x="16" y="84" width="382" height="166"/>
                     <subviews>
                         <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" borderStyle="roundedRect" placeholder="Email" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="yTP-PQ-xUl">
                             <rect key="frame" x="0.0" y="0.0" width="382" height="34"/>
@@ -65,6 +66,18 @@
                                 <constraint firstAttribute="height" constant="40" id="8jc-B5-rVt"/>
                             </constraints>
                         </stackView>
+                        <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" id="7zR-9d-VdU">
+                            <rect key="frame" x="0.0" y="132" width="382" height="34"/>
+                            <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <color key="backgroundColor" white="0.66666666666666663" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                            <fontDescription key="fontDescription" type="system" pointSize="15"/>
+                            <state key="normal" title="Sign in with Google" image="google">
+                                <preferredSymbolConfiguration key="preferredSymbolConfiguration" scale="medium"/>
+                            </state>
+                            <connections>
+                                <action selector="googleButtonAction:" destination="-1" eventType="touchUpInside" id="JVx-TR-dUO"/>
+                            </connections>
+                        </button>
                     </subviews>
                 </stackView>
             </subviews>
@@ -78,4 +91,7 @@
             <point key="canvasLocation" x="140.57971014492756" y="153.34821428571428"/>
         </view>
     </objects>
+    <resources>
+        <image name="google" width="48" height="48"/>
+    </resources>
 </document>
