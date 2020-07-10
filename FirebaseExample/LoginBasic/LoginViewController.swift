@@ -46,6 +46,8 @@ class LoginViewController: UIViewController {
     }
 
     @IBAction func googleButtonAction(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.signOut()
+        GIDSignIn.sharedInstance()?.signIn()
     }
 }
 
@@ -55,8 +57,8 @@ extension LoginViewController: LoginProtocol {
         navigationController?.pushViewController(HomeViewController(email: email, provider: provider), animated: animated)
     }
     
-    func showAlert(_ error: String) {
-        let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+    func showAlert(_ error: String, _ provider: String) {
+        let alertController = UIAlertController(title: provider, message: error, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
         present(alertController, animated: true, completion: nil)
     }

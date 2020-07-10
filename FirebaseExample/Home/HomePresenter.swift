@@ -7,6 +7,7 @@
 //
 
 import FirebaseAuth
+import GoogleSignIn
 
 class HomePresenter {
 
@@ -20,13 +21,20 @@ class HomePresenter {
         removeUserData()
 
         switch provider {
-        case .basic, .google:
-            do {
-                try Auth.auth().signOut()
-                delegate?.goBack()
-            } catch {
-                print("Ocurrió un error.")
-            }
+        case .basic:
+            firebaseLogOut()
+        case .google:
+            GIDSignIn.sharedInstance()?.signOut()
+            firebaseLogOut()
+        }
+    }
+
+    private func firebaseLogOut() {
+        do {
+            try Auth.auth().signOut()
+            delegate?.goBack()
+        } catch {
+            print("Ocurrió un error.")
         }
     }
 

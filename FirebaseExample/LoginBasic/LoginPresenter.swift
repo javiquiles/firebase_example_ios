@@ -64,7 +64,7 @@ class LoginPresenter {
     }
 
     private func onError(_ error: String, provider: ProviderType) {
-        delegate?.showAlert(error)
+        delegate?.showAlert(error, provider.rawValue)
     }
 
 }
