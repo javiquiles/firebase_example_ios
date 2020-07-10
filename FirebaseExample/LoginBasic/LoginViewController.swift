@@ -30,8 +30,7 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-
-        //googleButton.imageView?.contentMode = .scaleAspectFit
+        presenter.viewDidLoad()
     }
 
     @IBAction func logInButtonAction(_ sender: Any) {
@@ -48,8 +47,8 @@ class LoginViewController: UIViewController {
 
 extension LoginViewController: LoginProtocol {
 
-    func goToHome(email: String) {
-        navigationController?.pushViewController(HomeViewController(email: email, provider: .basic), animated: true)
+    func goToHome(email: String, provider: ProviderType, animated: Bool) {
+        navigationController?.pushViewController(HomeViewController(email: email, provider: provider), animated: animated)
     }
     
     func showAlert(_ error: String) {

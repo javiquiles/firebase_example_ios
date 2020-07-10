@@ -12,6 +12,13 @@ class LoginPresenter {
 
     weak var delegate: LoginProtocol?
 
+    func viewDidLoad() {
+        if let email = UserDefaults.standard.value(forKey: "email") as? String,
+            let provider = ProviderType(rawValue: UserDefaults.standard.value(forKey: "provider") as? String ?? "") {
+            delegate?.goToHome(email: email, provider: provider, animated: false)
+        }
+    }
+
     func signUpButtonTapped(email: String?, password: String?) {
         guard let email = email, let password = password else { return }
 
@@ -38,7 +45,7 @@ class LoginPresenter {
     }
 
     private func onSuccess(_ result: AuthDataResult) {
-        delegate?.goToHome(email: result.user.email ?? "")
+        delegate?.goToHome(email: result.user.email ?? "", provider: .basic, animated: true)
     }
 
     private func onError(_ error: String) {

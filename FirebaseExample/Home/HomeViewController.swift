@@ -42,10 +42,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
-        navigationItem.setHidesBackButton(true, animated: false)
         presenter.viewDidLoad(email, provider)
         emailLabel.text = email
         providerLabel.text = provider.rawValue
+        navigationItem.setHidesBackButton(true, animated: false)
     }
 
     @IBAction func logOutButtonAction(_ sender: Any) {

@@ -7,6 +7,6 @@
 //
 
 protocol LoginProtocol: class {
-    func goToHome(email: String)
+    func goToHome(email: String, provider: ProviderType, animated: Bool)
     func showAlert(_ error: String)
 }
