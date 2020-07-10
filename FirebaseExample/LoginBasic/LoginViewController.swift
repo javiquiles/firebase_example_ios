@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
 
@@ -31,6 +32,9 @@ class LoginViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         presenter.viewDidLoad()
+
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.delegate = self
     }
 
     @IBAction func logInButtonAction(_ sender: Any) {
@@ -55,6 +59,14 @@ extension LoginViewController: LoginProtocol {
         let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
         present(alertController, animated: true, completion: nil)
+    }
+
+}
+
+extension LoginViewController: GIDSignInDelegate {
+
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        presenter.didSignInGoogle(user: user, error: error)
     }
 
 }
