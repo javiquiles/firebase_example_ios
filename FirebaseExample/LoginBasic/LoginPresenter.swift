@@ -36,9 +36,9 @@ class LoginPresenter {
         }
     }
 
-    func didSignInGoogle(user: GIDGoogleUser, error: Error) {
-        guard let authentication = user.authentication  else {
-            onError(error.localizedDescription, provider: .google)
+    func didSignInGoogle(user: GIDGoogleUser?, error: Error?) {
+        guard let authentication = user?.authentication, error == nil else {
+            onError(error?.localizedDescription ?? "", provider: .google)
             return
         }
 
