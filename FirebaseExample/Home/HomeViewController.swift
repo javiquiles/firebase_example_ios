@@ -10,6 +10,7 @@ import UIKit
 
 enum ProviderType: String {
     case basic
+    case google
 }
 
 class HomeViewController: UIViewController {
@@ -41,8 +42,10 @@ class HomeViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
 
+        presenter.viewDidLoad(email, provider)
         emailLabel.text = email
         providerLabel.text = provider.rawValue
+        navigationItem.setHidesBackButton(true, animated: false)
     }
 
     @IBAction func logOutButtonAction(_ sender: Any) {

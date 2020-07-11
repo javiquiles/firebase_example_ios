@@ -7,16 +7,24 @@
 //
 
 import FirebaseAuth
+import GoogleSignIn
 
 class LoginPresenter {
 
     weak var delegate: LoginProtocol?
 
+    func viewDidLoad() {
+        if let email = UserDefaults.standard.value(forKey: "email") as? String,
+            let provider = ProviderType(rawValue: UserDefaults.standard.value(forKey: "provider") as? String ?? "") {
+            delegate?.goToHome(email: email, provider: provider, animated: false)
+        }
+    }
+
     func signUpButtonTapped(email: String?, password: String?) {
         guard let email = email, let password = password else { return }
 
         Auth.auth().createUser(withEmail: email, password: password) { [weak self] (result, error) in
-            self?.onComplete(result, error)
+            self?.onComplete(result, error, provider: .basic)
         }
     }
 
@@ -24,25 +32,39 @@ class LoginPresenter {
         guard let email = email, let password = password else { return }
 
         Auth.auth().signIn(withEmail: email, password: password) { [weak self] (result, error) in
-            self?.onComplete(result, error)
+            self?.onComplete(result, error, provider: .basic)
         }
     }
 
-    private func onComplete(_ result: AuthDataResult?, _ error: Error?) {
-        if let result = result, error == nil {
-            onSuccess(result)
+    func didSignInGoogle(user: GIDGoogleUser?, error: Error?) {
+        guard let authentication = user?.authentication, error == nil else {
+            onError(error?.localizedDescription ?? "", provider: .google)
             return
         }
 
-        onError(error!.localizedDescription)
+        let credential = GoogleAuthProvider.credential(withIDToken: authentication.idToken,
+                                                       accessToken: authentication.accessToken)
+
+        Auth.auth().signIn(with: credential) { [weak self] (result, error) in
+            self?.onComplete(result, error, provider: .google)
+        }
     }
 
-    private func onSuccess(_ result: AuthDataResult) {
-        delegate?.goToHome(email: result.user.email ?? "")
+    private func onComplete(_ result: AuthDataResult?, _ error: Error?, provider: ProviderType) {
+        if let result = result, error == nil {
+            onSuccess(result, provider)
+            return
+        }
+
+        onError(error?.localizedDescription ?? "", provider: provider)
     }
 
-    private func onError(_ error: String) {
-        delegate?.showAlert(error)
+    private func onSuccess(_ result: AuthDataResult, _ provider: ProviderType) {
+        delegate?.goToHome(email: result.user.email ?? "", provider: provider, animated: true)
+    }
+
+    private func onError(_ error: String, provider: ProviderType) {
+        delegate?.showAlert(error, provider.rawValue)
     }
 
 }

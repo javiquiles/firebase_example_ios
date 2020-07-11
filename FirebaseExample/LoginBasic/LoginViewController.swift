@@ -7,6 +7,7 @@
 //
 
 import UIKit
+import GoogleSignIn
 
 class LoginViewController: UIViewController {
 
@@ -14,7 +15,8 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var passwordTextField: UITextField!
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
-
+    @IBOutlet weak var googleButton: UIButton!
+    
     private let presenter: LoginPresenter
 
     init(presenter: LoginPresenter) {
@@ -29,7 +31,10 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        presenter.viewDidLoad()
 
+        GIDSignIn.sharedInstance()?.presentingViewController = self
+        GIDSignIn.sharedInstance()?.delegate = self
     }
 
     @IBAction func logInButtonAction(_ sender: Any) {
@@ -40,18 +45,30 @@ class LoginViewController: UIViewController {
         presenter.signUpButtonTapped(email: emailTextField.text, password: passwordTextField.text)
     }
 
+    @IBAction func googleButtonAction(_ sender: Any) {
+        GIDSignIn.sharedInstance()?.signOut()
+        GIDSignIn.sharedInstance()?.signIn()
+    }
 }
 
 extension LoginViewController: LoginProtocol {
 
-    func goToHome(email: String) {
-        navigationController?.pushViewController(HomeViewController(email: email, provider: .basic), animated: true)
+    func goToHome(email: String, provider: ProviderType, animated: Bool) {
+        navigationController?.pushViewController(HomeViewController(email: email, provider: provider), animated: animated)
     }
     
-    func showAlert(_ error: String) {
-        let alertController = UIAlertController(title: "Error", message: error, preferredStyle: .alert)
+    func showAlert(_ error: String, _ provider: String) {
+        let alertController = UIAlertController(title: provider, message: error, preferredStyle: .alert)
         alertController.addAction(UIAlertAction(title: "Aceptar", style: .default))
         present(alertController, animated: true, completion: nil)
+    }
+
+}
+
+extension LoginViewController: GIDSignInDelegate {
+
+    func sign(_ signIn: GIDSignIn!, didSignInFor user: GIDGoogleUser!, withError error: Error!) {
+        presenter.didSignInGoogle(user: user, error: error)
     }
 
 }

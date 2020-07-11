@@ -7,21 +7,47 @@
 //
 
 import FirebaseAuth
+import GoogleSignIn
 
 class HomePresenter {
 
     weak var delegate: HomeProtocol?
 
+    func viewDidLoad(_ email: String, _ provider: ProviderType) {
+        saveUserData(email, provider)
+    }
+
     func logOutButtonTapped(_ provider: ProviderType) {
+        removeUserData()
+
         switch provider {
         case .basic:
-            do {
-                try Auth.auth().signOut()
-                delegate?.goBack()
-            } catch {
-                print("Ocurrió un error.")
-            }
+            firebaseLogOut()
+        case .google:
+            GIDSignIn.sharedInstance()?.signOut()
+            firebaseLogOut()
         }
+    }
+
+    private func firebaseLogOut() {
+        do {
+            try Auth.auth().signOut()
+            delegate?.goBack()
+        } catch {
+            print("Ocurrió un error.")
+        }
+    }
+
+    private func saveUserData(_ email: String, _ provider: ProviderType) {
+        UserDefaults.standard.set(email, forKey: "email")
+        UserDefaults.standard.set(provider.rawValue, forKey: "provider")
+        UserDefaults.standard.synchronize()
+    }
+
+    private func removeUserData() {
+        UserDefaults.standard.removeObject(forKey: "email")
+        UserDefaults.standard.removeObject(forKey: "provider")
+        UserDefaults.standard.synchronize()
     }
 
 }
