@@ -16,6 +16,7 @@ class LoginViewController: UIViewController {
     @IBOutlet weak var logInButton: UIButton!
     @IBOutlet weak var signUpButton: UIButton!
     @IBOutlet weak var googleButton: UIButton!
+    @IBOutlet weak var facebookButton: UIButton!
     
     private let presenter: LoginPresenter
 
@@ -49,6 +50,10 @@ class LoginViewController: UIViewController {
         GIDSignIn.sharedInstance()?.signOut()
         GIDSignIn.sharedInstance()?.signIn()
     }
+
+    @IBAction func facebookButtonAction(_ sender: Any) {
+    }
+
 }
 
 extension LoginViewController: LoginProtocol {
