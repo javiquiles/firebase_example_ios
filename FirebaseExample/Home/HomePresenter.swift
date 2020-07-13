@@ -8,6 +8,7 @@
 
 import FirebaseAuth
 import GoogleSignIn
+import FBSDKLoginKit
 
 class HomePresenter {
 
@@ -25,6 +26,9 @@ class HomePresenter {
             firebaseLogOut()
         case .google:
             GIDSignIn.sharedInstance()?.signOut()
+            firebaseLogOut()
+        case .facebook:
+            LoginManager().logOut()
             firebaseLogOut()
         }
     }

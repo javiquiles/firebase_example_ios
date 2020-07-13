@@ -8,6 +8,7 @@
 
 import FirebaseAuth
 import GoogleSignIn
+import FBSDKLoginKit
 
 class LoginPresenter {
 
@@ -47,6 +48,28 @@ class LoginPresenter {
 
         Auth.auth().signIn(with: credential) { [weak self] (result, error) in
             self?.onComplete(result, error, provider: .google)
+        }
+    }
+
+    func facebookButtonTapped(viewController: UIViewController) {
+        let loginManager = LoginManager()
+        loginManager.logOut()
+        loginManager.logIn(permissions: [.email], viewController: viewController) { [weak self] (result) in
+            self?.onCompleteFacebook(result)
+        }
+    }
+
+    private func onCompleteFacebook(_ result: LoginResult) {
+        switch result {
+        case .success(_, _, let token):
+            let credential = FacebookAuthProvider.credential(withAccessToken: token.tokenString)
+            Auth.auth().signIn(with: credential) { [weak self] (result, error) in
+                self?.onComplete(result, error, provider: .facebook)
+            }
+        case .cancelled:
+            break
+        case .failed(let error):
+            onError(error.localizedDescription, provider: .facebook)
         }
     }
 

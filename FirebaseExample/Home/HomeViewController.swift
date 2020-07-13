@@ -11,6 +11,7 @@ import UIKit
 enum ProviderType: String {
     case basic
     case google
+    case facebook
 }
 
 class HomeViewController: UIViewController {
